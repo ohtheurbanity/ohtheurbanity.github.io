@@ -23,19 +23,26 @@
         <style>
         html, body, #mapid {
             width: 100vw;
-            height: 96%;
+            height: 88%;
             padding: 0;
             margin: 0;
         }
         </style>
     </head>
+    
     <form>
         <div class="form-group mx-2">
             <label for="formControlRange">Year: <span id="mapyear"></span></label>
                 <input type="range" min="1970" max="2010" value="1970" step="10" class="form-control-range" id="formControlRange">
         </div>
     </form>
+    <div class = "mx-2">
+    <div class="d-flex justify-content-start">
+    <button type = "button" class="btn btn-light my-1" onclick="toggleLegend();">Legend On/Off</button>
+    </div>
+    </div>
     <div id="mapid"></div>
+    
     
     <script>
     var mymap = L.map('mapid').setView([34.7466, -92.2986], 10);    
@@ -75,6 +82,19 @@
     return div;
     };
     legend.addTo(mymap);
+    
+    var showLegend = true;  // default value showing the legend
+
+    var toggleLegend = function(){
+        if(showLegend === true){
+        /* use jquery to select your DOM elements that has the class 'legend' */
+           $('.legend').hide(); 
+           showLegend = false; 
+        }else{
+           $('.legend').show();
+           showLegend = true; 
+        }
+    }
     
     var slider = document.getElementById("formControlRange");
     var output = document.getElementById("mapyear");
