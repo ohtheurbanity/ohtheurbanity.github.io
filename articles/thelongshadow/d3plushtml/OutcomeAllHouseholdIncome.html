@@ -1,0 +1,28 @@
+<!doctype html>
+<meta charset="utf-8">
+
+<script src="d3plus.v2.js"></script>
+
+<body>
+
+</body>
+<script>
+var myData = [
+  {"Area": "Northern Little Rock","Household Income": 48130},
+  {"Area": "Western Little Rock", "Household Income": 56774},
+  {"Area": "Southern Little Rock", "Household Income": 24844},
+
+];
+
+new d3plus.BarChart()
+  .config({
+    data: myData,
+    groupBy: "Area",
+    x: "Area",
+    y: "Household Income",
+    title: "Adult Household Income if you grew up in Different Areas of Little Rock (Opportunity Atlas)",
+    xConfig: ({title: "Area"}),
+    yConfig: ({title: "Household Income in 2015 dollars"})
+  })
+  .render();
+</script>

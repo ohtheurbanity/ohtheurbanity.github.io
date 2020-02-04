@@ -1,0 +1,52 @@
+<!doctype html>
+<meta charset="utf-8">
+
+<script src="d3plus.v2.js"></script>
+
+<body>
+
+</body>
+
+<script>
+    
+var myData = [
+  {race: "'White'", x: 1970, y: 52209},
+  {race: "'White'", x: 1980, y: 38626},
+  {race: "'White'", x: 1990, y: 28376},
+  {race: "'White'", x: 2000, y: 17556},
+  {race: "'White'", x: 2010, y: 11914},
+  {race: "'Black'", x: 1970, y: 23421},
+  {race: "'Black'", x: 1980, y: 36920},
+  {race: "'Black'", x: 1990, y: 39057},
+  {race: "'Black'", x: 2000, y: 43274},
+  {race: "'Black'", x: 2010, y: 43877},
+  {race: "'Latinx'", x: 1980, y: 714},
+  {race: "'Latinx'", x: 1990, y: 425},
+  {race: "'Latinx'", x: 2000, y: 2035},
+  {race: "'Latinx'", x: 2010, y: 4911},
+  
+];
+
+
+new d3plus.LinePlot()
+  .config({
+    data: myData,
+    groupBy: "race",
+    legendConfig: {
+      shapeConfig: {
+        height: 25,
+        width: 25
+      }
+    }
+  })
+  .title("Southern Little Rock Demographics from 1970-2010")
+  .xConfig({
+    title:"Year"})
+  .yConfig({
+    title:"Population"})
+  .shapeConfig({
+    Line: {
+      strokeWidth: 3.5}})
+  .render();
+
+</script>

@@ -1,0 +1,52 @@
+<!doctype html>
+<meta charset="utf-8">
+
+<script src="d3plus.v2.js"></script>
+
+<body>
+
+</body>
+
+<script>
+    
+var myData = [
+  {section: "'Northern'", x: 1970, y: 42086},
+  {section: "'Northern'", x: 1980, y: 46870},
+  {section: "'Northern'", x: 1990, y: 47309},
+  {section: "'Northern'", x: 2000, y: 46992},
+  {section: "'Northern'", x: 2010, y: 45578},
+  {section: "'West'", x: 1970, y: 5181},
+  {section: "'West'", x: 1980, y: 15331},
+  {section: "'West'", x: 1990, y: 25651},
+  {section: "'West'", x: 2000, y: 35873},
+  {section: "'West'", x: 2010, y: 44626},
+  {section: "'Southern'", x: 1970, y: 75798},
+  {section: "'Southern'", x: 1980, y: 77069},
+  {section: "'Southern'", x: 1990, y: 68512},
+  {section: "'Southern'", x: 2000, y: 63933},
+  {section: "'Southern'", x: 2010, y: 61729},
+];
+
+
+new d3plus.LinePlot()
+  .config({
+    data: myData,
+    groupBy: "section",
+    legendConfig: {
+      shapeConfig: {
+        height: 25,
+        width: 25
+      }
+    }
+  })
+  .title("Little Rock Population by Selected Areas, 1970-2010")
+  .xConfig({
+    title:"Year"})
+  .yConfig({
+    title:"Population"})
+  .shapeConfig({
+    Line: {
+      strokeWidth: 3.5}})
+  .render();
+
+</script>

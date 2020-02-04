@@ -1,0 +1,52 @@
+<!doctype html>
+<meta charset="utf-8">
+
+<script src="d3plus.v2.js"></script>
+
+<body>
+
+</body>
+
+<script>
+    
+var myData = [
+  {section: "'Northern'", x: 1970, y: 54418},
+  {section: "'Northern'", x: 1980, y: 54971},
+  {section: "'Northern'", x: 1990, y: 57205},
+  {section: "'Northern'", x: 2000, y: 56503},
+  {section: "'Northern'", x: 2010, y: 61327},
+  {section: "'West'", x: 1970, y: 61936},
+  {section: "'West'", x: 1980, y: 68030},
+  {section: "'West'", x: 1990, y: 68819},
+  {section: "'West'", x: 2000, y: 78825},
+  {section: "'West'", x: 2010, y: 76617},
+  {section: "'Southern'", x: 1970, y: 36906},
+  {section: "'Southern'", x: 1980, y: 35229},
+  {section: "'Southern'", x: 1990, y: 35738},
+  {section: "'Southern'", x: 2000, y: 36977},
+  {section: "'Southern'", x: 2010, y: 30836},  
+];
+
+
+new d3plus.LinePlot()
+  .config({
+    data: myData,
+    groupBy: "section",
+    legendConfig: {
+      shapeConfig: {
+        height: 25,
+        width: 25
+      }
+    }
+  })
+  .title("Little Rock Household Median Income by Selected Areas, 1970-2010")
+  .xConfig({
+    title:"Year"})
+  .yConfig({
+    title:"Household Income (in 2010 dollars)"})
+  .shapeConfig({
+    Line: {
+      strokeWidth: 3.5}})
+  .render();
+
+</script>

@@ -1,0 +1,28 @@
+<!doctype html>
+<meta charset="utf-8">
+
+<script src="d3plus.v2.js"></script>
+
+<body>
+
+</body>
+<script>
+var myData = [
+  {"Area": "Northern Little Rock","Poverty Rate": 12.12},
+  {"Area": "West Little Rock", "Poverty Rate": 8.5},
+  {"Area": "Southern Little Rock", "Poverty Rate": 32.79},
+
+];
+
+new d3plus.BarChart()
+  .config({
+    data: myData,
+    groupBy: "Area",
+    x: "Area",
+    y: "Poverty Rate",
+    title: "Poverty Rates by Selected Areas in Little Rock, 2012-2016",
+    xConfig: ({title: "Area"}),
+    yConfig: ({title: "Poverty Rate (percent)"})
+  })
+  .render();
+</script>

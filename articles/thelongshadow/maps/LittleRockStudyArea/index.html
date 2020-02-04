@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/WesternLittleRock_1.js"></script>
+        <script src="data/NorthernLittleRock_2.js"></script>
+        <script src="data/SouthernLittleRock_3.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        })
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+            if (bounds_group.getLayers().length) {
+                map.fitBounds(bounds_group.getBounds());
+            }
+        }
+        var layer_StamenToner_0 = L.tileLayer('http://tile.stamen.com/toner/{z}/{x}/{y}.png', {
+            opacity: 1.0,
+            attribution: '<a href="http://maps.stamen.com/">Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_StamenToner_0;
+        map.addLayer(layer_StamenToner_0);
+        function pop_WesternLittleRock_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['GEO_ID'] !== null ? Autolinker.link(feature.properties['GEO_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['STATE'] !== null ? Autolinker.link(feature.properties['STATE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COUNTY'] !== null ? Autolinker.link(feature.properties['COUNTY'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TRACT'] !== null ? Autolinker.link(feature.properties['TRACT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAME'] !== null ? Autolinker.link(feature.properties['NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LSAD'] !== null ? Autolinker.link(feature.properties['LSAD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CENSUSAREA'] !== null ? Autolinker.link(feature.properties['CENSUSAREA'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_WesternLittleRock_1_0() {
+            return {
+                pane: 'pane_WesternLittleRock_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(40,47,106,0.6980392156862745)',
+                interactive: false,
+            }
+        }
+        map.createPane('pane_WesternLittleRock_1');
+        map.getPane('pane_WesternLittleRock_1').style.zIndex = 401;
+        map.getPane('pane_WesternLittleRock_1').style['mix-blend-mode'] = 'normal';
+        var layer_WesternLittleRock_1 = new L.geoJson(json_WesternLittleRock_1, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_WesternLittleRock_1',
+            layerName: 'layer_WesternLittleRock_1',
+            pane: 'pane_WesternLittleRock_1',
+            onEachFeature: pop_WesternLittleRock_1,
+            style: style_WesternLittleRock_1_0,
+        });
+        bounds_group.addLayer(layer_WesternLittleRock_1);
+        map.addLayer(layer_WesternLittleRock_1);
+        function pop_NorthernLittleRock_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['GEO_ID'] !== null ? Autolinker.link(feature.properties['GEO_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['STATE'] !== null ? Autolinker.link(feature.properties['STATE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COUNTY'] !== null ? Autolinker.link(feature.properties['COUNTY'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TRACT'] !== null ? Autolinker.link(feature.properties['TRACT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAME'] !== null ? Autolinker.link(feature.properties['NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LSAD'] !== null ? Autolinker.link(feature.properties['LSAD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CENSUSAREA'] !== null ? Autolinker.link(feature.properties['CENSUSAREA'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_NorthernLittleRock_2_0() {
+            return {
+                pane: 'pane_NorthernLittleRock_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(174,38,0,0.6980392156862745)',
+                interactive: false,
+            }
+        }
+        map.createPane('pane_NorthernLittleRock_2');
+        map.getPane('pane_NorthernLittleRock_2').style.zIndex = 402;
+        map.getPane('pane_NorthernLittleRock_2').style['mix-blend-mode'] = 'normal';
+        var layer_NorthernLittleRock_2 = new L.geoJson(json_NorthernLittleRock_2, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_NorthernLittleRock_2',
+            layerName: 'layer_NorthernLittleRock_2',
+            pane: 'pane_NorthernLittleRock_2',
+            onEachFeature: pop_NorthernLittleRock_2,
+            style: style_NorthernLittleRock_2_0,
+        });
+        bounds_group.addLayer(layer_NorthernLittleRock_2);
+        map.addLayer(layer_NorthernLittleRock_2);
+        function pop_SouthernLittleRock_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['GEO_ID'] !== null ? Autolinker.link(feature.properties['GEO_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['STATE'] !== null ? Autolinker.link(feature.properties['STATE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COUNTY'] !== null ? Autolinker.link(feature.properties['COUNTY'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TRACT'] !== null ? Autolinker.link(feature.properties['TRACT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAME'] !== null ? Autolinker.link(feature.properties['NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LSAD'] !== null ? Autolinker.link(feature.properties['LSAD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CENSUSAREA'] !== null ? Autolinker.link(feature.properties['CENSUSAREA'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_SouthernLittleRock_3_0() {
+            return {
+                pane: 'pane_SouthernLittleRock_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,209,62,0.6980392156862745)',
+                interactive: false,
+            }
+        }
+        map.createPane('pane_SouthernLittleRock_3');
+        map.getPane('pane_SouthernLittleRock_3').style.zIndex = 403;
+        map.getPane('pane_SouthernLittleRock_3').style['mix-blend-mode'] = 'normal';
+        var layer_SouthernLittleRock_3 = new L.geoJson(json_SouthernLittleRock_3, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_SouthernLittleRock_3',
+            layerName: 'layer_SouthernLittleRock_3',
+            pane: 'pane_SouthernLittleRock_3',
+            onEachFeature: pop_SouthernLittleRock_3,
+            style: style_SouthernLittleRock_3_0,
+        });
+        bounds_group.addLayer(layer_SouthernLittleRock_3);
+        map.addLayer(layer_SouthernLittleRock_3);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/SouthernLittleRock_3.png" /> Southern Little Rock': layer_SouthernLittleRock_3,'<img src="legend/NorthernLittleRock_2.png" /> Northern Little Rock': layer_NorthernLittleRock_2,'<img src="legend/WesternLittleRock_1.png" /> Western Little Rock': layer_WesternLittleRock_1,"Stamen Toner": layer_StamenToner_0,},{collapsed:false}).addTo(map);L.control.scale({position: 'bottomleft', maxWidth: 100, metric: true, imperial: false, updateWhenIdle: false}).addTo(map);
+        setBounds();
+        resetLabels([layer_NorthernLittleRock_2]);
+        map.on("zoomend", function(){
+            resetLabels([layer_NorthernLittleRock_2]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_NorthernLittleRock_2]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_NorthernLittleRock_2]);
+        });
+        </script>
+    </body>
+</html>
